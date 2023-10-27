@@ -11,14 +11,19 @@ public class Agenda {
         contatos = new ArrayList<>();
     }
 
-    //Adicionar contato à agenda
+    //Adicionar contato à agenda - CREATE
     public boolean adicionar(Contato contato){
         return contatos.contains(contato)?false:contatos.add(contato);
     }
 
-    //Listar os contatos
+    //Listar os contatos - READ
     public List<Contato> getContatos() {
         return contatos;
+    }
+
+    //Remover um contato - DELETE
+    public boolean remover(Contato contato){
+        return contatos.remove(contato);
     }
 
 }
