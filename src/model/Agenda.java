@@ -21,6 +21,17 @@ public class Agenda {
         return contatos;
     }
 
+    //Atualizar um contato - UPDATE
+    public boolean atualizar(Contato atual, Contato novo){
+        int posicao =contatos.indexOf(atual);
+        if(posicao>=0){
+            contatos.set(posicao, novo);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     //Remover um contato - DELETE
     public boolean remover(Contato contato){
         return contatos.remove(contato);
