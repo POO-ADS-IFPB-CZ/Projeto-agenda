@@ -2,7 +2,7 @@ package model;
 
 import java.util.Objects;
 
-public class Contato {
+public class Contato implements Comparable<Contato>{
 
     private String nome;
     private String email;
@@ -49,5 +49,19 @@ public class Contato {
     @Override
     public int hashCode() {
         return Objects.hash(nome, telefone);
+    }
+
+    @Override
+    public String toString() {
+        return "Contato{" +
+                "nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", telefone='" + telefone + '\'' +
+                '}';
+    }
+
+    @Override
+    public int compareTo(Contato o) {
+        return nome.compareTo(o.nome);
     }
 }

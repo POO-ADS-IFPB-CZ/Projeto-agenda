@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Agenda {
@@ -18,6 +19,7 @@ public class Agenda {
 
     //Listar os contatos - READ
     public List<Contato> getContatos() {
+        Collections.sort(contatos);
         return contatos;
     }
 
@@ -37,4 +39,10 @@ public class Agenda {
         return contatos.remove(contato);
     }
 
+    @Override
+    public String toString() {
+        return "Agenda{" +
+                "contatos=" + contatos +
+                '}';
+    }
 }
