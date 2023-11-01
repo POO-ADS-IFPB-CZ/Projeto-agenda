@@ -1,35 +1,36 @@
 package view;
 
-import model.Contato;
-import model.Usuario;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Usuario usuario = new Usuario("joao@gmail.com", "123456");
 
-        Contato maria = new Contato("Maria",
-                "maria@gmai.com", "83 99999-9999");
-        usuario.getAgenda().adicionar(maria);
+        File file = new File("teste.txt");
 
-        Contato pedro = new Contato("Pedro",
-                "pedro@gmai.com", "84 98888-8888");
-        usuario.getAgenda().adicionar(pedro);
+        // Criando o arquivo
+        if(!file.exists()){
+            try{
+                file.createNewFile();
+            }catch (IOException exception){
+                System.out.println("Falha ao criar arquivo");
+            }
+        }
 
-        usuario.getAgenda().adicionar(new Contato("Ana",
-                "ana@gmai.com", "83 97777-7777"));
+        List<String> lista = List.of("João", "Maria", "Pedro");
 
-        System.out.println(usuario.getAgenda().getContatos());
-
-        //Chamar os métodos de deletar e atualizar
-        usuario.getAgenda().remover(maria);
-
-        usuario.getAgenda().atualizar(pedro, new Contato(
-                "Pedro da Silva", "pedrosilva@gmail.com",
-                "84 99999-9999"));
-
-        System.out.println(usuario.getAgenda().getContatos());
-
-
+        //Escrever no arquivo
+        try{
+            ObjectOutputStream out = new ObjectOutputStream(
+                    new FileOutputStream(file)
+            );
+            out.writeObject(lista);
+        }catch(IOException exception){
+            System.out.println("Falha ao escrever no arquivo");
+        }
 
     }
 }
