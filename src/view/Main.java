@@ -25,18 +25,5 @@ public class Main {
 //            System.out.println(exception);
 //        }
 
-        //Ler do arquivo
-//        try{
-//            ObjectInputStream in = new ObjectInputStream(
-//                    new FileInputStream(file)
-//            );
-//            List<String> lista = (List<String>) in.readObject();
-//            System.out.println(lista);
-//        }catch (IOException exception){
-//            System.out.println(exception);
-//        }catch (ClassNotFoundException exception) {
-//            System.out.println(exception);
-//        }
-
     }
 }
