@@ -53,4 +53,13 @@ public class UsuarioDao {
         return false;
     }
 
+    public boolean addUsuario(Usuario usuario){
+        List<Usuario> usuarios = listarUsuarios();
+        if(usuarios.add(usuario)){
+            atualizarArquivo(usuarios);
+            return true;
+        }
+        return false;
+    }
+
 }
