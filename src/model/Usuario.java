@@ -1,7 +1,10 @@
 package model;
 
-public class Usuario {
+import java.io.Serializable;
 
+public class Usuario implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private String email;
     private String senha;
     private Agenda agenda;
@@ -32,4 +35,12 @@ public class Usuario {
         return agenda;
     }
 
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", agenda=" + agenda +
+                '}';
+    }
 }

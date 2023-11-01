@@ -1,5 +1,7 @@
 package view;
 
+import model.Usuario;
+
 import java.io.*;
 import java.util.List;
 
@@ -17,7 +19,11 @@ public class Main {
             }
         }
 
-//        List<String> lista = List.of("João", "Maria", "Pedro");
+//        List<Usuario> lista = List.of(
+//                new Usuario("joao@gmail.com", "123456"),
+//                new Usuario("maria@gmail.com", "123456"),
+//                new Usuario("pedro@gmail.com", "123456")
+//        );
 
         //Escrever no arquivo
 //        try{
@@ -26,7 +32,7 @@ public class Main {
 //            );
 //            out.writeObject(lista);
 //        }catch(IOException exception){
-//            System.out.println("Falha ao escrever no arquivo");
+//            System.out.println(exception);
 //        }
 
         //Ler do arquivo
@@ -37,9 +43,9 @@ public class Main {
             List<String> lista = (List<String>) in.readObject();
             System.out.println(lista);
         }catch (IOException exception){
-            System.out.println("Falha ao ler arquivo");
-        }catch (ClassNotFoundException e) {
-            System.out.println("Falha ao ler arquivo");
+            System.out.println(exception);
+        }catch (ClassNotFoundException exception) {
+            System.out.println(exception);
         }
 
     }
