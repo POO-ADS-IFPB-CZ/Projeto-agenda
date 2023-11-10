@@ -1,22 +1,41 @@
 package view;
 
-import dao.UsuarioDao;
-import model.Usuario;
+import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        UsuarioDao dao = new UsuarioDao();
+        ImageIcon imageIcon = new ImageIcon("icone.png");
 
-        System.out.println(dao.listarUsuarios());
+//        JOptionPane.showMessageDialog(null,
+//                "Hello World!", "Mensagem do sistema",
+//                JOptionPane.PLAIN_MESSAGE, imageIcon);
 
-        if(dao.addUsuario(new Usuario("ana@gmail.com", "123456"))){
-            System.out.println("Adicionado");
-        }else{
-            System.out.println("Falha");
+//        String nomes[] = {"João", "Maria", "Pedro", "Ana"};
+//
+//        String nome = (String) JOptionPane.showInputDialog(null,
+//                "Informe seu nome:", "Entrada de dados",
+//                JOptionPane.QUESTION_MESSAGE, null,nomes,
+//                nomes[0]);
+//        JOptionPane.showMessageDialog(null,
+//                "Bem vindo, "+nome);
+
+        int retorno = JOptionPane.showConfirmDialog(null,
+                "Deseja continuar?", "Mensagem do sistema",
+                JOptionPane.YES_NO_OPTION);
+
+        if(retorno == JOptionPane.YES_OPTION){
+            JOptionPane.showMessageDialog(null,
+                    "Escolheu sim");
         }
-
-        System.out.println(dao.listarUsuarios());
+        if(retorno == JOptionPane.NO_OPTION){
+            JOptionPane.showMessageDialog(null,
+                    "Escolheu não");
+        }
+        if(retorno == JOptionPane.CLOSED_OPTION){
+            JOptionPane.showMessageDialog(null,
+                    "Fechou");
+        }
 
     }
 }
