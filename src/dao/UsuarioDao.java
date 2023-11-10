@@ -62,4 +62,13 @@ public class UsuarioDao {
         return false;
     }
 
+    public boolean deletarUsuario(Usuario usuario){
+        List<Usuario> usuarios = listarUsuarios();
+        if(usuarios.remove(usuario)){
+            atualizarArquivo(usuarios);
+            return true;
+        }
+        return false;
+    }
+
 }
