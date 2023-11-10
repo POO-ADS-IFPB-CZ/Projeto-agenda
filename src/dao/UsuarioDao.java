@@ -71,4 +71,26 @@ public class UsuarioDao {
         return false;
     }
 
+    public Usuario buscarPorEmail(String email){
+        List<Usuario> usuarios = listarUsuarios();
+        for(Usuario usuario : usuarios){
+            if(usuario.getEmail().equals(email)){
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    public boolean atualizarUsuario(Usuario usuario){
+        Usuario usuario1 = buscarPorEmail(usuario.getEmail());
+        if(usuario1 != null){
+            List<Usuario> usuarios = listarUsuarios();
+            usuarios.remove(usuario1);
+            usuarios.add(usuario);
+            atualizarArquivo(usuarios);
+            return true;
+        }
+        return false;
+    }
+
 }

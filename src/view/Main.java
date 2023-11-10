@@ -8,20 +8,11 @@ public class Main {
 
         UsuarioDao dao = new UsuarioDao();
 
-//        if(dao.addUsuario(new Usuario("ana@gmail.com", "123456"))){
-//            System.out.println("Salvo com sucesso");
-//        }else{
-//            System.out.println("Falha ao salvar");
-//        }
-
         System.out.println(dao.listarUsuarios());
 
-        if(dao.deletarUsuario(
-                new Usuario("ana@gmail.com", "123456"))){
-            System.out.println("Deletado com sucesso");
-        }else{
-            System.out.println("Falha ao deletar");
-        }
+        Usuario usuario = dao.buscarPorEmail("pedro@gmail.com");
+        usuario.setSenha("852741");
+        dao.atualizarUsuario(usuario);
 
         System.out.println(dao.listarUsuarios());
 
