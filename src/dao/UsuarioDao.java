@@ -54,10 +54,12 @@ public class UsuarioDao {
     }
 
     public boolean addUsuario(Usuario usuario){
-        List<Usuario> usuarios = listarUsuarios();
-        if(usuarios.add(usuario)){
-            atualizarArquivo(usuarios);
-            return true;
+        if(buscarPorEmail(usuario.getEmail()) == null){
+            List<Usuario> usuarios = listarUsuarios();
+            if(usuarios.add(usuario)){
+                atualizarArquivo(usuarios);
+                return true;
+            }
         }
         return false;
     }

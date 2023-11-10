@@ -10,9 +10,11 @@ public class Main {
 
         System.out.println(dao.listarUsuarios());
 
-        Usuario usuario = dao.buscarPorEmail("pedro@gmail.com");
-        usuario.setSenha("852741");
-        dao.atualizarUsuario(usuario);
+        if(dao.addUsuario(new Usuario("ana@gmail.com", "123456"))){
+            System.out.println("Adicionado");
+        }else{
+            System.out.println("Falha");
+        }
 
         System.out.println(dao.listarUsuarios());
 
