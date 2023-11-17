@@ -32,7 +32,9 @@ public class TelaLogin extends JFrame {
         buttonCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Clicou em criar conta");
+                TelaCadastro telaCadastro = new TelaCadastro();
+                telaCadastro.pack();
+                telaCadastro.setVisible(true);
             }
         });
     }
