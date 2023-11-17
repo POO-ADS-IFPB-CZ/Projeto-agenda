@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
 
-        ImageIcon imageIcon = new ImageIcon("icone.png");
+//        ImageIcon imageIcon = new ImageIcon("icone.png");
 
 //        JOptionPane.showMessageDialog(null,
 //                "Hello World!", "Mensagem do sistema",
