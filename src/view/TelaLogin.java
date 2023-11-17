@@ -8,8 +8,8 @@ public class TelaLogin extends JFrame {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JTextField textField1;
-    private JPasswordField passwordField1;
+    private JTextField campoEmail;
+    private JPasswordField campoSenha;
     private JLabel label1;
 
     public TelaLogin() {
@@ -24,8 +24,9 @@ public class TelaLogin extends JFrame {
 
         buttonOK.addActionListener(new ActionListener() {
             @Override
-                public void actionPerformed(ActionEvent e) {
-                System.out.println("Clicou em ok");
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(campoEmail.getText());
+                System.out.println(campoSenha.getPassword());
             }
         });
 
