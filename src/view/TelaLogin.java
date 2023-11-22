@@ -1,5 +1,8 @@
 package view;
 
+import dao.UsuarioDao;
+import model.Usuario;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,8 +14,10 @@ public class TelaLogin extends JFrame {
     private JTextField campoEmail;
     private JPasswordField campoSenha;
     private JLabel label1;
+    private UsuarioDao dao;
 
     public TelaLogin() {
+        dao = new UsuarioDao();
         setContentPane(contentPane);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Tela de Login");
@@ -25,8 +30,26 @@ public class TelaLogin extends JFrame {
         buttonOK.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(campoEmail.getText());
-                System.out.println(campoSenha.getPassword());
+                Usuario usuario = dao.buscarPorEmail(campoEmail.getText());
+
+                if(usuario != null){
+                    //Usuário existe
+                    String senha = new String(campoSenha.getPassword());
+
+                    if(usuario.getSenha().equals(senha)){
+                        JOptionPane.showMessageDialog(contentPane,
+                                "Bem vindo!");
+                    }else{
+                        JOptionPane.showMessageDialog(contentPane, "Senha incorreta",
+                                "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                    }
+                }else{
+                    // Usuário não existe
+                    JOptionPane.showMessageDialog(contentPane,
+                            "Usuário não encontrado", "Mensagem de erro",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+
             }
         });
 
