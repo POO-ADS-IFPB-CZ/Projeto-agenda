@@ -1,6 +1,7 @@
 package view;
 
 import dao.UsuarioDao;
+import exception.UsuarioExisteException;
 import model.Usuario;
 
 import javax.swing.*;
@@ -34,11 +35,13 @@ public class TelaCadastro extends JDialog {
                 if(Arrays.equals(campoSenha1.getPassword(), campoSenha2.getPassword())){
                     Usuario usuario = new Usuario(campoEmail.getText(),
                             new String(campoSenha1.getPassword()));
-                    if(dao.addUsuario(usuario)){
-                        JOptionPane.showMessageDialog(contentPane,
-                                "Salvo com sucesso");
-                        dispose();
-                    }else{
+                    try {
+                        if (dao.addUsuario(usuario)) {
+                            JOptionPane.showMessageDialog(contentPane,
+                                    "Salvo com sucesso");
+                            dispose();
+                        }
+                    }catch (UsuarioExisteException exception) {
                         JOptionPane.showMessageDialog(contentPane, "Usuário já cadastrado",
                                 "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
                     }

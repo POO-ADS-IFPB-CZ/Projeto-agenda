@@ -1,5 +1,6 @@
 package dao;
 
+import exception.UsuarioExisteException;
 import model.Usuario;
 
 import java.io.*;
@@ -48,13 +49,15 @@ public class UsuarioDao {
         return false;
     }
 
-    public boolean addUsuario(Usuario usuario){
+    public boolean addUsuario(Usuario usuario) throws UsuarioExisteException {
         if(buscarPorEmail(usuario.getEmail()) == null){
             List<Usuario> usuarios = listarUsuarios();
             if(usuarios.add(usuario)){
                 atualizarArquivo(usuarios);
                 return true;
             }
+        }else{
+            throw new UsuarioExisteException("Usuário já existe");
         }
         return false;
     }
