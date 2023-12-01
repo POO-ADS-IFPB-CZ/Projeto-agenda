@@ -6,6 +6,7 @@ import model.Usuario;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class TelaLogin extends JFrame {
     private JPanel contentPane;
@@ -17,7 +18,12 @@ public class TelaLogin extends JFrame {
     private UsuarioDao dao;
 
     public TelaLogin() {
-        dao = new UsuarioDao();
+        try {
+            dao = new UsuarioDao();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(contentPane, "Falha ao abrir arquivo",
+                    "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+        }
         setContentPane(contentPane);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Tela de Login");

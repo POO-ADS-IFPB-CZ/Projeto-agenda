@@ -10,16 +10,11 @@ public class UsuarioDao {
 
     private File file;
 
-    public UsuarioDao(){
+    public UsuarioDao() throws IOException {
         file = new File("Usuarios");
-
         // Criando o arquivo
         if(!file.exists()){
-            try{
-                file.createNewFile();
-            }catch (IOException exception){
-                System.out.println("Falha ao criar arquivo");
-            }
+            file.createNewFile();
         }
     }
 

@@ -6,6 +6,7 @@ import model.Usuario;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class TelaCadastro extends JDialog {
@@ -18,7 +19,12 @@ public class TelaCadastro extends JDialog {
     private UsuarioDao dao;
 
     public TelaCadastro() {
-        dao = new UsuarioDao();
+        try {
+            dao = new UsuarioDao();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(contentPane, "Falha ao abrir arquivo",
+                    "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+        }
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
