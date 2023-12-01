@@ -42,7 +42,7 @@ public class TelaCadastro extends JDialog {
                             dispose();
                         }
                     }catch (UsuarioExisteException exception) {
-                        JOptionPane.showMessageDialog(contentPane, "Usuário já cadastrado",
+                        JOptionPane.showMessageDialog(contentPane, exception.getMessage(),
                                 "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
                     }
                 }else{
